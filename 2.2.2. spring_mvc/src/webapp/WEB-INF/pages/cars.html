@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table {
+            border-collapse: separate;
+            border: 2px solid black;
+            border-spacing: 4px;
+        }
+        td {
+            padding: 5px;
+            padding-right: 30px;
+            border: 1px solid lightgray;
+        }
+        th {
+            padding: 10px;
+            border: 1px solid black;
+        }
+        caption {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+    </style>
+    <title th:text="'Таблица ' + ${localized}"></title>
+</head>
+<body>
+    <table>
+        <caption th:text="${localized}"></caption>
+        <tr>
+            <th>Марка</th>
+            <th>Модель</th>
+            <th>Цвет</th>
+        </tr>
+        <th:block th:each="car : ${cars}">
+            <tr>
+                <td th:text="${car.manufacturer}"></td>
+                <td th:text="${car.model}"></td>
+                <td th:text="${car.color}"></td>
+            </tr>
+        </th:block>
+    </table>
+</body>
+</html>
