@@ -22,8 +22,7 @@ public class CarController {
     @GetMapping("/cars")
     public String printCars(@RequestParam(value = "locale", required = false) String locale,
                             ModelMap model) {
-        String requestLocale = Optional.ofNullable(locale).orElse("en");
-        model.addAttribute("localized", requestLocale.equals("ru") ? "МАШИНА" : "CARS");
+        model.addAttribute("localized", Optional.ofNullable(locale).orElse("en").equals("ru") ? "МАШИНА" : "CARS");
         model.addAttribute("cars", supplyService.getItems());
         return "cars";
     }
